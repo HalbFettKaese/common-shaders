@@ -3,7 +3,6 @@
         { "name": "common.data", "width": 2, "height": 2 },
         { "name": "common.dataSwap", "width": 2, "height": 2 },
         { "name": "manic.tentacles", "width": 256, "height": 256},
-        "swap",
         "water",
         "translucent",
         "itemEntity",
@@ -81,14 +80,19 @@
             ]
         },
         {
+            "name": "blit",
+            "intarget": "final",
+            "outtarget": "minecraft:main"
+        },
+        {
             "name": "manic.tentacles",
             "intarget": "common.data",
             "outtarget": "manic.tentacles"
         },
         {
             "name": "manic.insomnia",
-            "intarget": "final",
-            "outtarget": "swap",
+            "intarget": "minecraft:main",
+            "outtarget": "final",
             "auxtargets": [
                 {
                     "name": "DataSampler",
@@ -109,7 +113,7 @@
         },
         {
             "name": "blit",
-            "intarget": "swap",
+            "intarget": "final",
             "outtarget": "minecraft:main"
         }
     ]
