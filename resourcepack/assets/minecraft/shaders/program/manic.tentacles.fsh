@@ -127,6 +127,12 @@ float tentacles(vec2 uv, float baseIntensity) {
 
 void main() {
     float baseIntensity = (1. - texelFetch(DiffuseSampler, ivec2(1, 1), 0).z) * 10.0;
+    
+    if (baseIntensity == 0.0) {
+        fragColor = vec4(0);
+        return;
+    }
+
     vec2 uv = (texCoord - .5) * OutSize.xy / OutSize.xx;
 
     vec3 col = vec3(tentacles(uv, baseIntensity));
