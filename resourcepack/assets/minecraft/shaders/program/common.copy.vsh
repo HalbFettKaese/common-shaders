@@ -7,6 +7,7 @@ uniform vec2 OutSize;
 uniform vec2 InSize;
 
 out vec2 texCoord;
+flat out vec2 oneTexel;
 
 // Modified blit to work for copying between buffers of different sizes
 
@@ -25,4 +26,6 @@ void main(){
     gl_Position = vec4(x, y, 0.2, 1.0);
 
     texCoord = Position.xy / OutSize;
+
+    oneTexel = 1.0 / OutSize;
 }
