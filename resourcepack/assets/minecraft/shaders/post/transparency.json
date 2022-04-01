@@ -1,0 +1,116 @@
+{
+    "targets": [
+        { "name": "data", "width": 3, "height": 1 },
+        { "name": "dataSwap", "width": 3, "height": 1 },
+        { "name": "tentacles", "width": 256, "height": 256},
+        "swap",
+        "water",
+        "translucent",
+        "itemEntity",
+        "particles",
+        "clouds",
+        "weather",
+        "final"
+    ],
+    "passes": [
+        {
+            "name": "copy",
+            "intarget": "data",
+            "outtarget": "dataSwap"
+        },
+        {
+            "name": "data",
+            "intarget": "dataSwap",
+            "outtarget": "data",
+            "auxtargets": [
+                {
+                    "name": "WorldSampler",
+                    "id": "particles"
+                }
+            ]
+        },
+        {
+            "name": "tentacles",
+            "intarget": "data",
+            "outtarget": "tentacles"
+        },
+        {
+            "name": "transparency",
+            "intarget": "minecraft:main",
+            "outtarget": "final",
+            "auxtargets": [
+                {
+                    "name": "DiffuseDepthSampler",
+                    "id": "minecraft:main:depth"
+                },
+                {
+                    "name": "TranslucentSampler",
+                    "id": "translucent"
+                },
+                {
+                    "name": "TranslucentDepthSampler",
+                    "id": "translucent:depth"
+                },
+                {
+                    "name": "ItemEntitySampler",
+                    "id": "itemEntity"
+                },
+                {
+                    "name": "ItemEntityDepthSampler",
+                    "id": "itemEntity:depth"
+                },
+                {
+                    "name": "ParticlesSampler",
+                    "id": "particles"
+                },
+                {
+                    "name": "ParticlesDepthSampler",
+                    "id": "particles:depth"
+                },
+                {
+                    "name": "CloudsSampler",
+                    "id": "clouds"
+                },
+                {
+                    "name": "CloudsDepthSampler",
+                    "id": "clouds:depth"
+                },
+                {
+                    "name": "WeatherSampler",
+                    "id": "weather"
+                },
+                {
+                    "name": "WeatherDepthSampler",
+                    "id": "weather:depth"
+                }
+            ]
+        },
+        {
+            "name": "insomnia",
+            "intarget": "final",
+            "outtarget": "swap",
+            "auxtargets": [
+                {
+                    "name": "DataSampler",
+                    "id": "dataSwap"
+                },
+                {
+                    "name": "TentacleSampler",
+                    "id": "tentacles"
+                },
+                {
+                    "name": "EyesSampler",
+                    "id": "manic.eyes_overlay",
+                    "width": 1600,
+                    "height": 900,
+                    "bilinear": false
+                }
+            ]
+        },
+        {
+            "name": "blit",
+            "intarget": "swap",
+            "outtarget": "minecraft:main"
+        }
+    ]
+}
