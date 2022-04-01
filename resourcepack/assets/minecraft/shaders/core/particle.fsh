@@ -22,7 +22,7 @@ out vec4 fragColor;
 
 void main() {
     if (isMarker == 1.0) {
-        fragColor = vec4(254./255., tint.bg, 1);
+        fragColor = vec4(254./255., tint.gb, 1);
         if (ivec2(gl_FragCoord.xy) != ivec2(0))
             discard;
     } else {

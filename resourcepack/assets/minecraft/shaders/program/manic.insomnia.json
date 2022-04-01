@@ -4,12 +4,14 @@
         "srcrgb": "one",
         "dstrgb": "zero"
     },
-    "vertex": "copy",
-    "fragment": "data",
+    "vertex": "common.copy",
+    "fragment": "manic.insomnia",
     "attributes": [ "Position" ],
     "samplers": [
         { "name": "DiffuseSampler" },
-        { "name": "WorldSampler" }
+        { "name": "DataSampler" },
+        { "name": "TentacleSampler" },
+        { "name": "EyesSampler" }
     ],
     "uniforms": [
         { "name": "ProjMat",    "type": "matrix4x4", "count": 16, "values": [ 1.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 0.0, 1.0 ] },

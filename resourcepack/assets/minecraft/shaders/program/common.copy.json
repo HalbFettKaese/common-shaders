@@ -4,7 +4,7 @@
         "srcrgb": "one",
         "dstrgb": "zero"
     },
-    "vertex": "copy",
+    "vertex": "common.copy",
     "fragment": "blit",
     "attributes": [ "Position" ],
     "samplers": [

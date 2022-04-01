@@ -122,7 +122,7 @@ void main() {
     // Normalized pixel coordinates (from 0 to 1)
     vec2 uv = texCoord;
 
-    float baseIntensity = (1. - texelFetch(DataSampler, ivec2(2, 0), 0).y) * 10.0;
+    float baseIntensity = (1. - texelFetch(DataSampler, ivec2(1, 1), 0).z) * 10.0;
     
     float s = length(uv - .5) * baseIntensity;
     

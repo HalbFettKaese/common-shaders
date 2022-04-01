@@ -1,8 +1,8 @@
 {
     "targets": [
-        { "name": "data", "width": 3, "height": 1 },
-        { "name": "dataSwap", "width": 3, "height": 1 },
-        { "name": "tentacles", "width": 256, "height": 256},
+        { "name": "common.data", "width": 2, "height": 2 },
+        { "name": "common.dataSwap", "width": 2, "height": 2 },
+        { "name": "manic.tentacles", "width": 256, "height": 256},
         "swap",
         "water",
         "translucent",
@@ -14,25 +14,20 @@
     ],
     "passes": [
         {
-            "name": "copy",
-            "intarget": "data",
-            "outtarget": "dataSwap"
+            "name": "common.copy",
+            "intarget": "common.data",
+            "outtarget": "common.dataSwap"
         },
         {
-            "name": "data",
-            "intarget": "dataSwap",
-            "outtarget": "data",
+            "name": "common.data",
+            "intarget": "common.dataSwap",
+            "outtarget": "common.data",
             "auxtargets": [
                 {
                     "name": "WorldSampler",
                     "id": "particles"
                 }
             ]
-        },
-        {
-            "name": "tentacles",
-            "intarget": "data",
-            "outtarget": "tentacles"
         },
         {
             "name": "transparency",
@@ -86,17 +81,22 @@
             ]
         },
         {
-            "name": "insomnia",
+            "name": "manic.tentacles",
+            "intarget": "common.data",
+            "outtarget": "manic.tentacles"
+        },
+        {
+            "name": "manic.insomnia",
             "intarget": "final",
             "outtarget": "swap",
             "auxtargets": [
                 {
                     "name": "DataSampler",
-                    "id": "dataSwap"
+                    "id": "common.dataSwap"
                 },
                 {
                     "name": "TentacleSampler",
-                    "id": "tentacles"
+                    "id": "manic.tentacles"
                 },
                 {
                     "name": "EyesSampler",
