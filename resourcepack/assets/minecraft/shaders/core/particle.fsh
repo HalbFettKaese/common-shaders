@@ -23,7 +23,12 @@ out vec4 fragColor;
 void main() {
     if (isMarker == 1.0) {
         fragColor = vec4(254./255., tint.gb, 1);
-        if (ivec2(gl_FragCoord.xy) != ivec2(0))
+        ivec2 iCoord = ivec2(gl_FragCoord.xy);
+        if (
+            (((iCoord.x + iCoord.y) & 1) == 1)
+            || (abs(tint.g * 255. - 253.) < .5 && iCoord != ivec2(0, 0))
+            || (abs(tint.g * 255. - 252.) < .5 && iCoord != ivec2(0, 2))
+        )
             discard;
     } else {
         // Vanilla calculation + emissive stuff

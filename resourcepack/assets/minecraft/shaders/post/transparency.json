@@ -1,7 +1,7 @@
 {
     "targets": [
-        { "name": "common.data", "width": 2, "height": 2 },
-        { "name": "common.dataSwap", "width": 2, "height": 2 },
+        { "name": "common.data", "width": 2, "height": 3 },
+        { "name": "common.dataSwap", "width": 2, "height": 3 },
         { "name": "manic.tentacles", "width": 256, "height": 256},
         "water",
         "translucent",
@@ -118,6 +118,22 @@
                     "width": 1600,
                     "height": 900,
                     "bilinear": false
+                }
+            ]
+        },
+        {
+            "name": "blit",
+            "intarget": "final",
+            "outtarget": "minecraft:main"
+        },
+        {
+            "name": "sanguine.blood",
+            "intarget": "minecraft:main",
+            "outtarget": "final",
+            "auxtargets": [
+                {
+                    "name": "DataSampler",
+                    "id": "common.dataSwap"
                 }
             ]
         },

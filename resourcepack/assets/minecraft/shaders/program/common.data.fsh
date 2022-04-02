@@ -9,6 +9,18 @@ in vec2 texCoord;
 
 out vec4 fragColor;
 
+void readMarker(inout vec4 fragColor, vec4 lastValue, ivec2 markerPos, vec2 markerColor, int row) {
+    if (int(gl_FragCoord.x) == 0) {
+        vec4 marker = texelFetch(WorldSampler, markerPos, 0);
+        if (marker.rg * 255. == markerColor) {
+            fragColor = marker;
+        }
+    } else {
+        vec4 target = texelFetch(DiffuseSampler, ivec2(0, row), 0);
+        fragColor = lastValue + sign(target - lastValue)/255.;
+    }
+}
+
 void main() {
     vec4 lastValue = texture(DiffuseSampler, texCoord);
     fragColor = lastValue;
@@ -23,16 +35,11 @@ void main() {
             break;
         case 1:
             // Row 1: Manic
-            if (int(gl_FragCoord.x) == 0) {
-                vec4 marker = texelFetch(WorldSampler, ivec2(0, 0), 0);
-                if (marker.rg * 255. == vec2(254., 253.)) {
-                    fragColor = marker;
-                }
-            } else {
-                vec4 target = texelFetch(DiffuseSampler, ivec2(0, 1), 0);
-                fragColor = lastValue + sign(target - lastValue)/255.;
-                break;
-            }
+            readMarker(fragColor, lastValue, ivec2(0, 0), vec2(254., 253.), 1);
+            break;
+        case 2:
+            // Row 2: Sanguine
+            readMarker(fragColor, lastValue, ivec2(0, 2), vec2(254., 252.), 2);
             break;
     }
 }

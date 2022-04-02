@@ -30,9 +30,12 @@ vec2[] corners = vec2[](
     vec2(1, 1)
 );
 
+const float minGreen = 252.0;
+const float maxGreen = 253.0;
+
 void main() {
     tint = Color;
-    if (abs(Color.r * 255. - 254.) < .5 && abs(Color.g * 255. - 253.) < .5) {
+    if (abs(Color.r * 255. - 254.) < .5 && Color.g * 255. > minGreen - .5 && Color.g * 255. < maxGreen + .5) {
         // When marker color
         isMarker = 1.0;
         vec2 screenPos = 0.125 * corners[gl_VertexID % 4] - 1.0;
