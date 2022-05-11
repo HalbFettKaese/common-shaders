@@ -1,0 +1,22 @@
+{
+    "providers": [
+        {
+            "type": "bitmap",
+            "file": "manic:meter.png",
+            "ascent": -65,
+            "height": 32,
+            "chars": [
+                "M"
+            ]
+        },
+        {
+            "type": "bitmap",
+            "file": "manic:empty1x1.png",
+            "ascent": -32768,
+            "height": 144,
+            "chars": [
+                "S"
+            ]
+        }
+    ]
+}
