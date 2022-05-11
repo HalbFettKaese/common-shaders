@@ -29,6 +29,12 @@ The offset along the x/y axis is determined by the value of the red/green channe
 | 3     | 2      | Down/Left |
 | 4     | 2      | Up/Right  |
 
+## Usage example
+
+The pack has an included usage example. It can be called with the command
+`/title @a actionbar [{"text":"SM","font":"manic:meter","color":"#0104FD"}]`
+where `S` is the same width as `M` in order to make the latter be aligned to the left rather than being centered, and `M` has a character offset applied to it such that it would normally be *below* the screen, such that adding the screen height using offset 4 brings it to the upper edge.
+
 # Core shaders included from other repositories
 * https://github.com/Ancientkingg/fancyPants
 * https://github.com/ShockMicro/CorePerspectiveModels
