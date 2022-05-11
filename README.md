@@ -16,6 +16,19 @@ To ensure that all packs can receive their inputs simultaneously, marker particl
 * Row 1: Manic
 * Row 2: Sanguine
 
+# Text offsets through color
+Text elements can be offset in proportions of the screen, controlled by the color that the text has. Setting the text color's blue channel to 253 (0xFD) marks a character as having the effect applied, and the text will be displayed as if the used tint was white instead.
+
+The offset along the x/y axis is determined by the value of the red/green channels. Each channel's value corresponds to the following offsets, with one unit being the distance between the screen center and the edge of the screen.
+
+| Color | Amount | Direction |
+|-------|--------|-----------|
+| 0     | 0      | -         |
+| 1     | 1      | Down/Left |
+| 2     | 1      | Up/Right  |
+| 3     | 2      | Down/Left |
+| 4     | 2      | Up/Right  |
+
 # Core shaders included from other repositories
 * https://github.com/Ancientkingg/fancyPants
 * https://github.com/ShockMicro/CorePerspectiveModels

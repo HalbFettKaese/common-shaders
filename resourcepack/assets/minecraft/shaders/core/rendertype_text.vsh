@@ -32,10 +32,12 @@ float to_offset(float col) {
 }
 
 void main() {
-    gl_Position = ProjMat * ModelViewMat * vec4(Position, 1.0);
     bool marker = abs(Color.z * 255. - 253.) < 0.5;
     if (marker) {
+        gl_Position = ProjMat * ModelViewMat * vec4(Position.xy, -2.0, 1.0);
         gl_Position.xy += gl_Position.w * vec2(to_offset(Color.x), to_offset(Color.y));
+    } else {
+        gl_Position = ProjMat * ModelViewMat * vec4(Position, 1.0);
     }
 
     vertexDistance = fog_distance(ModelViewMat, IViewRotMat * Position, FogShape);
