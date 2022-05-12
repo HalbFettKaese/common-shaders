@@ -17,23 +17,14 @@ To ensure that all packs can receive their inputs simultaneously, marker particl
 * Row 2: Sanguine
 
 # Text offsets through color
-Text elements can be offset in proportions of the screen, controlled by the color that the text has. Setting the text color's blue channel to 253 (0xFD) marks a character as having the effect applied, and the text will be displayed as if the used tint was white instead.
-
-The offset along the x/y axis is determined by the value of the red/green channels. Each channel's value corresponds to the following offsets, with one unit being the distance between the screen center and the edge of the screen.
-
-| Color | Amount | Direction |
-|-------|--------|-----------|
-| 0     | 0      | -         |
-| 1     | 1      | Down/Left |
-| 2     | 1      | Up/Right  |
-| 3     | 2      | Down/Left |
-| 4     | 2      | Up/Right  |
+Text elements can be offset in proportions of the screen, controlled by the color that the text has. Setting the last character of the hex string to `D` marks the character as being affected. The remaining digits are split up in the middle, with the left half going from -1 screen width to 1 screen width horizontally, and the right half going from -1 screen height to 1 screen height vertically. A conversion with inputs ranging from 0 to 1023 in each axis can look like `hex = (x_offset << 14) | (y_offset << 4) | 13`
 
 ## Usage example
-
 The pack has an included usage example. It can be called with the command
-`/title @a actionbar [{"text":"SM","font":"manic:meter","color":"#0104FD"}]`
-where `S` is the same width as `M` in order to make the latter be aligned to the left rather than being centered, and `M` has a character offset applied to it such that it would normally be *below* the screen, such that adding the screen height using offset 4 brings it to the upper edge.
+`/title @a actionbar [{"text":"SM","font":"manic:meter","color":"#403ffd"}]`
+where `S` is the same width as `M` in order to make the latter be aligned to the left rather than being centered, and `M` has a character offset applied to it such that it would normally be *below* the screen, such that adding one full screen height brings it to the top of the screen.
+
+More specifically, the left half in this is `0x100`, and the right half is `0x3ff`, which combine into `(0x100 << 10) | 0x3ff = 0x403ff`.
 
 # Core shaders included from other repositories
 * https://github.com/Ancientkingg/fancyPants
