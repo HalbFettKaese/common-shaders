@@ -19,6 +19,7 @@ out vec4 fragColor;
 // Set base intensity to value between 0 and 10
 //const float baseIntensity = 0.0;
 
+const float luma_contrast = 1.5;
 
 const float minSaturation = 0.3;
 
@@ -138,6 +139,9 @@ void main() {
     
     // Read base screen view (in this case, constant texture)
     vec3 col = texture(DiffuseSampler, uv).rgb;
+
+    // Increase contrast on luma
+    col = mix(1.0, luma_contrast, baseIntensity / 10.0) * (col - 0.5) + 0.5;
     
     // Apply greyscale
     float saturation = minSaturation + (1. - minSaturation) * (1. - baseIntensity / 10.0);
