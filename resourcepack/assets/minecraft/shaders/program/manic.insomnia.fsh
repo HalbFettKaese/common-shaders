@@ -19,7 +19,7 @@ out vec4 fragColor;
 // Set base intensity to value between 0 and 10
 //const float baseIntensity = 0.0;
 
-const float luma_contrast = 1.5;
+const float luma_contrast = 1.3;
 
 const float minSaturation = 0.3;
 
