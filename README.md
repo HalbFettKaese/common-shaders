@@ -30,3 +30,4 @@ More specifically, the left half in this is `0x100`, and the right half is `0x3f
 * https://github.com/Ancientkingg/fancyPants
 * https://github.com/ShockMicro/CorePerspectiveModels
 * https://github.com/ShockMicro/VanillaDynamicEmissives
+* https://github.com/Godlander/objmc
