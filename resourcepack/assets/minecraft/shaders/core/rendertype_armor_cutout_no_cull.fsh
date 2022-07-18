@@ -139,7 +139,8 @@ void main()
             color = armor * vertexColor * ColorModulator;
         else // If it's a custom texture
             color = armor * vtc * ColorModulator;
-        apply_emissivity(armor, coords);
+        if (vtc != vec4(1))
+            apply_emissivity(color, coords);
     }
     else // If it's another vanilla armor, for example diamond_layer_1.png or diamond_layer_2.png
     {
