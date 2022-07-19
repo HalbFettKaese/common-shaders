@@ -55,6 +55,7 @@ void main() {
 
     color = make_emissive(color, lightColor, maxLightColor, vertexDistance, alpha);
 	color.a = remap_alpha(alpha) / 255.0;
+    color.a *= vertexColor.a;
 
     fragColor = linear_fog(color, vertexDistance, FogStart, FogEnd, FogColor);
 }
