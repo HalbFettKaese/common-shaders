@@ -17,14 +17,26 @@ To ensure that all packs can receive their inputs simultaneously, marker particl
 * Row 2: Sanguine
 
 # Text offsets through color
-Text elements can be offset in proportions of the screen, controlled by the color that the text has. Setting the last character of the hex string to `D` marks the character as being affected. The remaining digits are split up in the middle, with the left half going from -1 screen width to 1 screen width horizontally, and the right half going from -1 screen height to 1 screen height vertically. A conversion with inputs ranging from 0 to 1023 in each axis can look like `hex = (x_offset << 14) | (y_offset << 4) | 13`
+Text elements can be offset in proportions of the screen, controlled by the color that the text has. Setting the the red and green channel to `01f9` marks the character as being affected. The red channel is split into its two digits, with the first character representing the offset along the x axis and the second character representing that along the y axis. The following table shows the offsets that each input digit describes, with one unit corresponding to a full screen width:
+
+| Digit | Offset | Direction |
+|-------|--------|-----------|
+| 0     | 1      | Down/Left |
+| 1     | 0.75   | Down/Left |
+| 2     | 0.5    | Down/Left |
+| 3     | 0.25   | Down/Left |
+| 4     | 0      | -         |
+| 5     | 0.25   | Up/Right  |
+| 6     | 0.5    | Up/Right  |
+| 7     | 0.75   | Up/Right  |
+| 8     | 1      | Up/Right  |
 
 ## Usage example
 The pack has an included usage example. It can be called with the command
-`/title @a actionbar [{"text":"SM","font":"manic:meter","color":"#403ffd"}]`
+`/title @a actionbar [{"text":"SM","font":"manic:meter","color":"#2801f9"}]`
 where `S` is the same width as `M` in order to make the latter be aligned to the left rather than being centered, and `M` has a character offset applied to it such that it would normally be *below* the screen, such that adding one full screen height brings it to the top of the screen.
 
-More specifically, the left half in this is `0x100`, and the right half is `0x3ff`, which combine into `(0x100 << 10) | 0x3ff = 0x403ff`.
+More specifically, the first two characters in this are `0x28`, where the `2` means "half a screen width to the left" and the `8` means "A full screen height up".
 
 # Core shaders included from other repositories
 * https://github.com/Ancientkingg/fancyPants
