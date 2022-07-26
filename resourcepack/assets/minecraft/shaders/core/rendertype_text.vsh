@@ -18,18 +18,35 @@ out float vertexDistance;
 out vec4 vertexColor;
 out vec2 texCoord0;
 
+float offsets[9] = float[9](
+    -2.0,
+    -1.5,
+    -1.0,
+    -0.5,
+     0.0,
+     0.5,
+     1.0,
+     1.5,
+     2.0
+);
+
 void main() {
-    int p = (int(Color.x * 255.) << 16) | (int(Color.y * 255.) << 8) | int(Color.z * 255.);
-    bool marker = (p & 0xf) == 0xd;
+
+    int p = int(Color.r * 255. + 0.5);
+    ivec2 ioffset = ivec2(
+        (p >> 4) & 0xf,
+        p & 0xf
+    );
+    bool marker = ivec2(Color.gb * 255. + 0.5) == ivec2(1, 249)
+        && ioffset.x < offsets.length()
+        && ioffset.y < offsets.length();
     if (marker) {
         gl_Position = ProjMat * ModelViewMat * vec4(Position.xy, Position.z - 2.0, 1.0);
 
         vec2 offset = vec2(
-            float((p >> 14) & 0x3ff),
-            float((p >>  4) & 0x3ff)
-        ) / 1024.0;
-
-        offset = (offset - .5) * 4.;
+            offsets[ioffset.x],
+            offsets[ioffset.y]
+        );
 
         gl_Position.xy += gl_Position.w * offset;
     } else {
