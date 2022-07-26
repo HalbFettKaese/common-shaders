@@ -3,6 +3,7 @@
 #moj_import <light.glsl>
 #moj_import <fog.glsl>
 #moj_import <objmc.tools>
+#moj_import <emissive_utils.glsl>
 
 in vec3 Position;
 in vec4 Color;
@@ -39,13 +40,19 @@ flat out int isGUI;
 flat out int isHand;
 flat out int noShadow;
 
+out vec4 maxLightColor;
+out float zpos;
+
 void main() {
+    zpos = Position.z;
     Pos = Position;
     vec3 normal = (ProjMat * ModelViewMat * vec4(Normal, 0.0)).rgb;
     texCoord = UV0;
     overlayColor = texelFetch(Sampler1, UV1, 0);
-    vertexColor = minecraft_mix_light(Light0_Direction, Light1_Direction, Normal, Color);
     lightColor = minecraft_sample_lightmap(Sampler2, UV2);
+    vertexColor = minecraft_mix_light(Light0_Direction, Light1_Direction, Normal, Color);
+
+    maxLightColor = minecraft_sample_lightmap(Sampler2, ivec2(240.0, 240.0));
 
     //objmc
     #define ENTITY
