@@ -48,6 +48,8 @@ void main() {
 	}
 
     if (color.a < 0.01) {discard;}
+    
+    color.rgb = mix(overlayColor.rgb, color.rgb, overlayColor.a);
 
     //custom lighting
     #define ENTITY
