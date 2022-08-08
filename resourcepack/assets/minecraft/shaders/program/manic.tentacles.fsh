@@ -11,14 +11,14 @@ out vec4 fragColor;
 #define PI 3.141592653589793
 
 
-const float tentacleIntensity = 0.275;
+const float tentacleIntensity = 0.27;
 const float tentacleCount = 10.;
-const float tentacleWiggle = 0.5;
+const float tentacleWiggle = 0.7;
 const float tentacleInOutA = 1.0;
 const float tentacleInOutF = 1.5;
 const float tentacleLimit = 0.4;
 
-const float tentacleFade = 0.5;
+const float tentacleFade = 0.6;
 
 float time() {
     vec3 dataTime = texelFetch(DiffuseSampler, ivec2(0, 0), 0).rgb;
