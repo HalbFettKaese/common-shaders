@@ -1,22 +1,25 @@
 # Common Shaders
  Vanilla Minecraft shaders for various effects, merged into one pack.
 
-# Marker particle tints
+# Marker particle setup
+## Tints
 Preferably, setting the red channel to be 254 or 253 sets it to be a marker, and the green channel identifies which effect you choose.
-* (254, 253, x): Manic full
-* (254, 251, x): Manic without screen effects
-* (254, 252, x): Sanguine
-
-# Marker pixel screen positions
+## Marker pixel screen positions
 To ensure that all packs can receive their inputs simultaneously, marker particles are transformed to fill different screen positions. They should form a gridlike pattern to make it possible to reconstruct every pixel from its surroundings.
-* (0, 0): Manic full
-* (1, 1): Manic without screen effects
-* (0, 2): Sanguine
 
 # Fabulous shader common.data buffer layout
 * Row 0: Pixel 0 contains time since last shader reload, read as `time = dataTime.x + 255. * dataTime.y + 65025. * dataTime.z;` to get the value in seconds.
-* Row 1: Manic
-* Row 2: Sanguine
+* Row 1-4: Manic
+* Row 5: Sanguine
+
+# Full layout
+| Tint          | Pixel Position | Data buffer row | Description                                                     |
+|---------------|----------------|-----------------|-----------------------------------------------------------------|
+| (254, 253, x) | (0, 0)         | 1               | Manic effect intensity, by default only controlling screen warp |
+| (254, 251, x) | (1, 1)         | 2               | Manic luma contrast toggle                                      |
+| (254, 250, x) | (2, 0)         | 3               | Manic vignette and tentacles toggle                             |
+| (254, 249, x) | (0, 4)         | 4               | Manic desaturation toggle                                       |
+| (254, 252, x) | (0, 2)         | 5               | Sanguine                                                        |
 
 # Text offsets through color
 Text elements can be offset in proportions of the screen, controlled by the color that the text has. Setting the the red and green channel to `01f9` marks the character as being affected. The red channel is split into its two digits, with the first character representing the offset along the x axis and the second character representing that along the y axis. The following table shows the offsets that each input digit describes, with one unit corresponding to a full screen width:

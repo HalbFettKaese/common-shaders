@@ -126,18 +126,17 @@ float tentacles(vec2 uv, float baseIntensity) {
 }
 
 void main() {
-    float screenEffectIntensity = (1. - texelFetch(DiffuseSampler, ivec2(1, 1), 0).z) * 10.0;
-    float tentacleIntensity = (1. - texelFetch(DiffuseSampler, ivec2(1, 2), 0).z) * 10.0;
-    float baseIntensity = max(screenEffectIntensity, tentacleIntensity);
+    float baseIntensity = (1. - texelFetch(DiffuseSampler, ivec2(1, 1), 0).z) * 10.0;
+    float tentacleIntensity = baseIntensity * (1. - texelFetch(DiffuseSampler, ivec2(0, 3), 0).z);
     
-    if (baseIntensity == 0.0) {
+    if (tentacleIntensity == 0.0) {
         fragColor = vec4(0);
         return;
     }
 
     vec2 uv = (texCoord - .5) * OutSize.xy / OutSize.xx;
 
-    vec3 col = vec3(tentacles(uv, baseIntensity));
+    vec3 col = vec3(tentacles(uv, tentacleIntensity));
 
     float fade = clamp(length(texCoord - .5) / tentacleFade, 0.0, 1.0);
 
