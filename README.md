@@ -3,12 +3,14 @@
 
 # Marker particle tints
 Preferably, setting the red channel to be 254 or 253 sets it to be a marker, and the green channel identifies which effect you choose.
-* (254, 253, x): Manic
+* (254, 253, x): Manic full
+* (254, 251, x): Manic without screen effects
 * (254, 252, x): Sanguine
 
 # Marker pixel screen positions
 To ensure that all packs can receive their inputs simultaneously, marker particles are transformed to fill different screen positions. They should form a gridlike pattern to make it possible to reconstruct every pixel from its surroundings.
-* (0, 0): Manic
+* (0, 0): Manic full
+* (1, 1): Manic without screen effects
 * (0, 2): Sanguine
 
 # Fabulous shader common.data buffer layout

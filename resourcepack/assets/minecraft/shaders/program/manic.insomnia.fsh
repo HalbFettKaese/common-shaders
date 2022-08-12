@@ -117,8 +117,23 @@ vec2 curl(vec2 uv, float time)
 
 }
 
+void applyTentacles(inout vec3 col, float baseIntensity, float time) {
+    col = mix(col, vec3(0), texture(TentacleSampler, texCoord).r);
+
+    // Apply eyes
+    float eyesScale = vignetteIntensity * baseIntensity * 0.37;
+
+    vec4 eyes = texture(EyesSampler, (vec2(0., 1.) + vec2(1., -1.) * texCoord - 0.5)*eyesScale + 0.5);
+
+    float eyeProgress = (sin(time * (1. + .1 * sin(eyes.g*255.*10353.7319)) + 173. * eyes.g * 255.) + .3);
+
+    col = mix(col, eyeColor * eyes.xxx, step(1. - eyes.z, eyeProgress) * eyes.a);
+}
+
 void main() {
-    float baseIntensity = (1. - texelFetch(DataSampler, ivec2(1, 1), 0).z) * 10.0;
+    float screenEffectIntensity = (1. - texelFetch(DataSampler, ivec2(1, 1), 0).z) * 10.0;
+    float tentacleIntensity = (1. - texelFetch(DataSampler, ivec2(1, 2), 0).z) * 10.0;
+    float baseIntensity = max(screenEffectIntensity, tentacleIntensity);
     
     if (baseIntensity == 0.0) {
         fragColor = texture(DiffuseSampler, texCoord);
@@ -141,10 +156,10 @@ void main() {
     vec3 col = texture(DiffuseSampler, uv).rgb;
 
     // Increase contrast on luma
-    col = mix(1.0, luma_contrast, baseIntensity / 10.0) * (col - 0.5) + 0.5;
+    col = mix(1.0, luma_contrast, screenEffectIntensity / 10.0) * (col - 0.5) + 0.5;
     
     // Apply greyscale
-    float saturation = minSaturation + (1. - minSaturation) * (1. - baseIntensity / 10.0);
+    float saturation = minSaturation + (1. - minSaturation) * (1. - screenEffectIntensity / 10.0);
     
     float greyscale = dot(col, vec3(.33));
     col = greyscale + saturation * (col - greyscale);
@@ -158,16 +173,7 @@ void main() {
     col *= 1. - clamp(vignette - 0.5, 0.0, 1.0);
     
     // Apply tentacles
-    col = mix(col, vec3(0), texture(TentacleSampler, texCoord).r);
-
-    // Apply eyes
-    float eyesScale = vignetteIntensity * baseIntensity * 0.37;
-
-    vec4 eyes = texture(EyesSampler, (vec2(0., 1.) + vec2(1., -1.) * texCoord - 0.5)*eyesScale + 0.5);
-
-    float eyeProgress = (sin(time * (1. + .1 * sin(eyes.g*255.*10353.7319)) + 173. * eyes.g * 255.) + .3);
-
-    col = mix(col, eyeColor * eyes.xxx, step(1. - eyes.z, eyeProgress) * eyes.a);
+    applyTentacles(col, baseIntensity, time);
     
     // Output color
     fragColor = vec4(col, 1.);

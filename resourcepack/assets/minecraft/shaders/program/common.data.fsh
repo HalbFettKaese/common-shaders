@@ -34,12 +34,16 @@ void main() {
             fragColor = vec4(Time, fract(time1), fract(time2), 1);
             break;
         case 1:
-            // Row 1: Manic
+            // Row 1: Manic full
             readMarker(fragColor, lastValue, ivec2(0, 0), vec2(254., 253.), 1);
             break;
         case 2:
+            // Row 1: Manic without screen effects
+            readMarker(fragColor, lastValue, ivec2(1, 1), vec2(254., 251.), 2);
+            break;
+        case 3:
             // Row 2: Sanguine
-            readMarker(fragColor, lastValue, ivec2(0, 2), vec2(254., 252.), 2);
+            readMarker(fragColor, lastValue, ivec2(0, 2), vec2(254., 252.), 3);
             break;
     }
 }

@@ -126,7 +126,9 @@ float tentacles(vec2 uv, float baseIntensity) {
 }
 
 void main() {
-    float baseIntensity = (1. - texelFetch(DiffuseSampler, ivec2(1, 1), 0).z) * 10.0;
+    float screenEffectIntensity = (1. - texelFetch(DiffuseSampler, ivec2(1, 1), 0).z) * 10.0;
+    float tentacleIntensity = (1. - texelFetch(DiffuseSampler, ivec2(1, 2), 0).z) * 10.0;
+    float baseIntensity = max(screenEffectIntensity, tentacleIntensity);
     
     if (baseIntensity == 0.0) {
         fragColor = vec4(0);
