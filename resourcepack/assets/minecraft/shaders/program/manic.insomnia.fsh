@@ -157,7 +157,7 @@ void main() {
     vec3 col = texture(DiffuseSampler, uv).rgb;
 
     // Increase contrast on luma
-    col = mix(1.0, luma_contrast, lumaIntensity / 10.0) * (col - 0.5) + 0.5;
+    col = mix(1.0, luma_contrast, lumaIntensity / 40.0) * (col - 0.5) + 0.5;
     
     // Apply greyscale
     float saturation = minSaturation + (1. - minSaturation) * (1. - desaturationIntensity / 10.0);
