@@ -34,12 +34,24 @@ void main() {
             fragColor = vec4(Time, fract(time1), fract(time2), 1);
             break;
         case 1:
-            // Row 1: Manic
+            // Row 1: Manic effect intensity
             readMarker(fragColor, lastValue, ivec2(0, 0), vec2(254., 253.), 1);
             break;
         case 2:
-            // Row 2: Sanguine
-            readMarker(fragColor, lastValue, ivec2(0, 2), vec2(254., 252.), 2);
+            // Row 21: Manic luma
+            readMarker(fragColor, lastValue, ivec2(1, 1), vec2(254., 251.), 2);
+            break;
+        case 3:
+            // Row 3: Manic vignette
+            readMarker(fragColor, lastValue, ivec2(2, 0), vec2(254., 250.), 3);
+            break;
+        case 4:
+            // Row 4: Manic desaturation
+            readMarker(fragColor, lastValue, ivec2(0, 4), vec2(254., 249.), 4);
+            break;
+        case 5:
+            // Row 5: Sanguine
+            readMarker(fragColor, lastValue, ivec2(0, 2), vec2(254., 252.), 5);
             break;
     }
 }

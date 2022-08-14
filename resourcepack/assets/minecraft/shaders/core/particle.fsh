@@ -26,8 +26,11 @@ void main() {
         ivec2 iCoord = ivec2(gl_FragCoord.xy);
         if (
             (((iCoord.x + iCoord.y) & 1) == 1)
-            || (abs(tint.g * 255. - 253.) < .5 && iCoord != ivec2(0, 0))
-            || (abs(tint.g * 255. - 252.) < .5 && iCoord != ivec2(0, 2))
+            || (abs(tint.g * 255. - 253.) < .5 && iCoord != ivec2(0, 0)) // Manic effect intensity
+            || (abs(tint.g * 255. - 251.) < .5 && iCoord != ivec2(1, 1)) // Manic luma toggle
+            || (abs(tint.g * 255. - 250.) < .5 && iCoord != ivec2(2, 0)) // Manic vignette toggle
+            || (abs(tint.g * 255. - 249.) < .5 && iCoord != ivec2(0, 4)) // Manic desaturation toggle
+            || (abs(tint.g * 255. - 252.) < .5 && iCoord != ivec2(0, 2)) // Sanguine
         )
             discard;
     } else {
