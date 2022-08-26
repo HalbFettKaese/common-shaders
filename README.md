@@ -22,7 +22,7 @@ To ensure that all packs can receive their inputs simultaneously, marker particl
 | (254, 252, x) | (0, 2)         | 5               | Sanguine                                                        |
 
 # Text offsets through color
-Text elements can be offset in proportions of the screen, controlled by the color that the text has. Setting the the red and green channel to `01f9` marks the character as being affected. The red channel is split into its two digits, with the first character representing the offset along the x axis and the second character representing that along the y axis. The following table shows the offsets that each input digit describes, with one unit corresponding to a full screen width:
+Text elements can be offset in proportions of the screen, controlled by the color that the text has. Setting the the green and blue channel, i.e. the last 4 characters of the color's hex code, to `01f9` marks the character as being affected. The red channel, which occupies the first two characters, is split into its two digits, with the first character representing the offset along the x axis and the second character representing that along the y axis. The following table shows the offsets that each input digit describes, with one unit corresponding to a full screen width:
 
 | Digit | Offset | Direction |
 |-------|--------|-----------|
