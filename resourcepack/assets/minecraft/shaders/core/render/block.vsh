@@ -2,7 +2,6 @@
 
 #moj_import <light.glsl>
 #moj_import <fog.glsl>
-#moj_import <objmc.tools>
 #moj_import <emissive_utils.glsl>
 
 in vec3 Position;
@@ -29,11 +28,13 @@ out vec3 Pos;
 out float transition;
 
 flat out int isCustom;
-flat out int noShadow;
+flat out int noshadow;
 
 out float dimension;
 out vec4 maxLightColor;
 out vec3 faceLightingNormal;
+
+#moj_import <objmc.tools>
 
 void main() {
     //default

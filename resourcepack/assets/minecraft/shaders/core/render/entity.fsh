@@ -26,7 +26,7 @@ in float transition;
 flat in int isCustom;
 flat in int isGUI;
 flat in int isHand;
-flat in int noShadow;
+flat in int noshadow;
 
 in vec4 maxLightColor;
 in float zpos;
@@ -46,14 +46,14 @@ void main() {
 		else if (check_alpha(alpha, 253.0) && zpos >= 2.0) discard; // If it's close enough on the z-axis, it's usually in an inventory slot.
 
 	}
-
-    if (color.a < 0.01) {discard;}
     
     color.rgb = mix(overlayColor.rgb, color.rgb, overlayColor.a);
 
     //custom lighting
     #define ENTITY
     #moj_import<objmc.light>
+    
+    if (color.a < 0.01) {discard;}
 
     color = make_emissive(color, lightColor, maxLightColor, vertexDistance, alpha);
 	color.a = remap_alpha(alpha) / 255.0;
