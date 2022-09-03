@@ -20,7 +20,7 @@ in vec3 Pos;
 in float transition;
 
 flat in int isCustom;
-flat in int noShadow;
+flat in int noshadow;
 
 in float dimension;
 in vec4 maxLightColor;
@@ -31,11 +31,12 @@ out vec4 fragColor;
 void main() {
     vec4 color = texture(Sampler0, texCoord);
     float alpha = textureLod(Sampler0, texCoord, 0.0).a * 255.;
-    if (color.a < 0.01) {discard;}
 
     //custom lighting
     #define BLOCK
     #moj_import<objmc.light>
+
+    if (color.a < 0.01) {discard;}
 
     color = make_emissive(color, lightColor, maxLightColor, vertexDistance, alpha);
 	color.a = remap_alpha(alpha) / 255.0;

@@ -2,7 +2,6 @@
 
 #moj_import <light.glsl>
 #moj_import <fog.glsl>
-#moj_import <objmc.tools>
 #moj_import <emissive_utils.glsl>
 
 in vec3 Position;
@@ -36,10 +35,12 @@ out float transition;
 flat out int isCustom;
 flat out int isGUI;
 flat out int isHand;
-flat out int noShadow;
+flat out int noshadow;
 
 out vec4 maxLightColor;
 out float zpos;
+
+#moj_import <objmc.tools>
 
 void main() {
     zpos = Position.z;
