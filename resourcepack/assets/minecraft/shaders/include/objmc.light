@@ -20,4 +20,4 @@ else if (noshadow == 0) {
     color *= minecraft_mix_light(Light0_Direction, Light1_Direction, normal, overlayColor);
     #endif
 }
-color *= lightColor * ColorModulator;
+color *= ColorModulator;
