@@ -31,13 +31,19 @@ float offsets[9] = float[9](
 );
 
 void main() {
+    bool markerShadow = ivec2(Color.gb * 255. + 0.5) == ivec2(1, 62);
+
+    if (markerShadow) {
+        gl_Position = vec4(3.0, 3.0, 3.0, 1.0);
+        return;
+    }
 
     int p = int(Color.r * 255. + 0.5);
     ivec2 ioffset = ivec2(
         (p >> 4) & 0xf,
         p & 0xf
     );
-    bool marker = ivec2(Color.gb * 255. + 0.5) == ivec2(1, 249)
+    bool marker = ivec2(Color.gb * 255. + 0.5) == ivec2(4, 249)
         && ioffset.x < offsets.length()
         && ioffset.y < offsets.length();
     if (marker) {
