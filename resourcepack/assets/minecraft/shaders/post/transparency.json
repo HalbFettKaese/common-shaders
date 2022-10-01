@@ -1,7 +1,7 @@
 {
     "targets": [
-        { "name": "common.data", "width": 2, "height": 6 },
-        { "name": "common.dataSwap", "width": 2, "height": 6 },
+        { "name": "common.data", "width": 2, "height": 7 },
+        { "name": "common.dataSwap", "width": 2, "height": 7 },
         { "name": "manic.tentacles", "width": 256, "height": 256},
         "water",
         "translucent",

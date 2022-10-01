@@ -30,6 +30,7 @@ void main() {
             || (abs(tint.g * 255. - 251.) < .5 && iCoord != ivec2(1, 1)) // Manic luma toggle
             || (abs(tint.g * 255. - 250.) < .5 && iCoord != ivec2(2, 0)) // Manic vignette toggle
             || (abs(tint.g * 255. - 249.) < .5 && iCoord != ivec2(0, 4)) // Manic desaturation toggle
+            || (abs(tint.g * 255. - 248.) < .5 && iCoord != ivec2(1, 3)) // Manic wobble toggle
             || (abs(tint.g * 255. - 252.) < .5 && iCoord != ivec2(0, 2)) // Sanguine
         )
             discard;

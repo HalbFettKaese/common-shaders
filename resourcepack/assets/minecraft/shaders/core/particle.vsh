@@ -30,7 +30,7 @@ vec2[] corners = vec2[](
     vec2(1, 1)
 );
 
-const float minGreen = 249.0;
+const float minGreen = 248.0;
 const float maxGreen = 253.0;
 
 void main() {

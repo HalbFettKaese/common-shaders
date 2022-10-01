@@ -50,8 +50,12 @@ void main() {
             readMarker(fragColor, lastValue, ivec2(0, 4), vec2(254., 249.), 4);
             break;
         case 5:
-            // Row 5: Sanguine
-            readMarker(fragColor, lastValue, ivec2(0, 2), vec2(254., 252.), 5);
+            // Row 5: Manic wobble
+            readMarker(fragColor, lastValue, ivec2(1, 3), vec2(254., 248.), 5);
+            break;
+        case 6:
+            // Row 6: Sanguine
+            readMarker(fragColor, lastValue, ivec2(0, 2), vec2(254., 252.), 6);
             break;
     }
 }
