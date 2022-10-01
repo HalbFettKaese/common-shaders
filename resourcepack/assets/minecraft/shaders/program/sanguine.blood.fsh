@@ -17,7 +17,7 @@ out vec4 fragColor;
 float lightAmplifier = 3.0;
 
 void main() {
-    float intensity = (1. - texelFetch(DataSampler, ivec2(1, 5), 0).z);
+    float intensity = (1. - texelFetch(DataSampler, ivec2(1, 6), 0).z);
 
     vec3 col = texture(DiffuseSampler, texCoord).rgb;
 
