@@ -31,7 +31,7 @@ const vec3 eyeColor = vec3(255, 255, 255)/255.;
 
 // curl is wobble
 // Detail scale describes spatial curl frequency
-const float curlIntensity = 0.4;
+const float wobbleBaseIntensity = 0.4;
 const float wobbleDownfall = .33;
 const float detailScale = 10.;
 
@@ -135,6 +135,7 @@ void main() {
     float lumaIntensity = baseIntensity * (1. - texelFetch(DataSampler, ivec2(0, 2), 0).z);
     float vignetteIntensity = vignetteBaseIntensity * (1. - texelFetch(DataSampler, ivec2(0, 3), 0).z);
     float desaturationIntensity = baseIntensity * (1. - texelFetch(DataSampler, ivec2(0, 4), 0).z);
+    float wobbleIntensity = wobbleBaseIntensity * (1. - texelFetch(DataSampler, ivec2(0, 5), 0).z);
     
     if (baseIntensity == 0.0) {
         fragColor = texture(DiffuseSampler, texCoord);
@@ -149,7 +150,7 @@ void main() {
     float s = length(uv - .5) * baseIntensity;
     
     // Apply curl
-    uv += curl(uv * detailScale, time + 20.0) * curlIntensity * pow(s, wobbleDownfall);
+    uv += curl(uv * detailScale, time + 20.0) * wobbleIntensity * pow(s, wobbleDownfall);
     
     uv = clamp(uv, 0., 1.);
     
@@ -157,7 +158,7 @@ void main() {
     vec3 col = texture(DiffuseSampler, uv).rgb;
 
     // Increase contrast on luma
-    col = mix(1.0, luma_contrast, lumaIntensity / 10.0) * (col - 0.5) + 0.5;
+    col = mix(1.0, luma_contrast, lumaIntensity / 40.0) * (col - 0.5) + 0.5;
     
     // Apply greyscale
     float saturation = minSaturation + (1. - minSaturation) * (1. - desaturationIntensity / 10.0);

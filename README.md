@@ -19,7 +19,8 @@ To ensure that all packs can receive their inputs simultaneously, marker particl
 | (254, 251, x) | (1, 1)         | 2               | Manic luma contrast toggle                                      |
 | (254, 250, x) | (2, 0)         | 3               | Manic vignette and tentacles toggle                             |
 | (254, 249, x) | (0, 4)         | 4               | Manic desaturation toggle                                       |
-| (254, 252, x) | (0, 2)         | 5               | Sanguine                                                        |
+| (254, 248, x) | (1, 3)         | 5               | Manic wobble toggle                                             |
+| (254, 252, x) | (0, 2)         | 6               | Sanguine                                                        |
 
 # Text offsets through color
 Text elements can be offset in proportions of the screen, controlled by the color that the text has. Setting the the green and blue channel, i.e. the last 4 characters of the color's hex code, to `04f9` marks the character as being affected. The red channel, which occupies the first two characters, is split into its two digits, with the first character representing the offset along the x axis and the second character representing that along the y axis. The following table shows the offsets that each input digit describes, with one unit corresponding to a full screen width:
