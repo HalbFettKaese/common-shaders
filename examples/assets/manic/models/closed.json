@@ -1,0 +1,431 @@
+{
+  "credit": "Made with Blockbench",
+  "texture_size": [
+    32,
+    32
+  ],
+  "textures": {
+    "0": "manic:grimoire_model_manic.closed_no_glint",
+    "particle": "manic:grimoire_model"
+  },
+  "elements": [
+    {
+      "name": "Spine",
+      "from": [
+        6.99,
+        0.99,
+        2.99
+      ],
+      "to": [
+        9.01,
+        1.01,
+        14.01
+      ],
+      "rotation": {
+        "angle": 0,
+        "axis": "z",
+        "origin": [
+          -2,
+          3,
+          8
+        ]
+      },
+      "faces": {
+        "north": {
+          "uv": [
+            0,
+            0,
+            0,
+            7
+          ],
+          "rotation": 270,
+          "texture": "#missing"
+        },
+        "east": {
+          "uv": [
+            0,
+            0,
+            0,
+            10
+          ],
+          "rotation": 90,
+          "texture": "#missing"
+        },
+        "south": {
+          "uv": [
+            0,
+            0,
+            0,
+            7
+          ],
+          "rotation": 90,
+          "texture": "#missing"
+        },
+        "west": {
+          "uv": [
+            0,
+            0,
+            0,
+            10
+          ],
+          "rotation": 90,
+          "texture": "#missing"
+        },
+        "up": {
+          "uv": [
+            0.125,
+            0.25,
+            0.375,
+            0.25
+          ],
+          "texture": "#0"
+        },
+        "down": {
+          "uv": [
+            0.625,
+            0.25,
+            0.875,
+            0.25
+          ],
+          "texture": "#0"
+        }
+      }
+    },
+    {
+      "name": "Paper",
+      "from": [
+        6.99,
+        8.99,
+        6.99
+      ],
+      "to": [
+        9.01,
+        9.01,
+        9.01
+      ],
+      "rotation": {
+        "angle": 0,
+        "axis": "z",
+        "origin": [
+          8.5,
+          2.75,
+          8.5
+        ]
+      },
+      "faces": {
+        "up": {
+          "uv": [
+            1.125,
+            0.25,
+            1.375,
+            0.25
+          ],
+          "texture": "#0"
+        }
+      }
+    },
+    {
+      "name": "Paper",
+      "from": [
+        7,
+        1,
+        4
+      ],
+      "to": [
+        9,
+        8,
+        13
+      ],
+      "rotation": {
+        "angle": 0,
+        "axis": "z",
+        "origin": [
+          8.5,
+          1.75,
+          8.5
+        ]
+      },
+      "faces": {
+        "north": {
+          "uv": [
+            1.625,
+            0.25,
+            1.875,
+            0.25
+          ],
+          "texture": "#0"
+        },
+        "south": {
+          "uv": [
+            2.125,
+            0.25,
+            2.375,
+            0.25
+          ],
+          "texture": "#0"
+        },
+        "up": {
+          "uv": [
+            2.625,
+            0.25,
+            2.875,
+            0.25
+          ],
+          "texture": "#0"
+        }
+      }
+    },
+    {
+      "name": "Cover",
+      "from": [
+        8.99,
+        0.99,
+        0.99
+      ],
+      "to": [
+        9.01,
+        12.01,
+        16.01
+      ],
+      "rotation": {
+        "angle": 0,
+        "axis": "z",
+        "origin": [
+          9,
+          1,
+          8.5
+        ]
+      },
+      "faces": {
+        "east": {
+          "uv": [
+            3.125,
+            0.25,
+            3.375,
+            0.25
+          ],
+          "texture": "#0"
+        },
+        "west": {
+          "uv": [
+            3.625,
+            0.25,
+            3.875,
+            0.25
+          ],
+          "texture": "#0"
+        }
+      }
+    },
+    {
+      "name": "Cover",
+      "from": [
+        6.99,
+        0.99,
+        0.99
+      ],
+      "to": [
+        7.01,
+        12.01,
+        16.01
+      ],
+      "rotation": {
+        "angle": 0,
+        "axis": "z",
+        "origin": [
+          7,
+          1,
+          8.5
+        ]
+      },
+      "faces": {
+        "east": {
+          "uv": [
+            3.125,
+            0.25,
+            3.375,
+            0.25
+          ],
+          "texture": "#0"
+        },
+        "west": {
+          "uv": [
+            3.625,
+            0.25,
+            3.875,
+            0.25
+          ],
+          "texture": "#0"
+        }
+      }
+    }
+  ],
+  "display": {
+    "thirdperson_righthand": {
+      "rotation": [
+        -75,
+        0,
+        -180
+      ],
+      "translation": [
+        0,
+        1.5,
+        4
+      ],
+      "scale": [
+        0.65,
+        0.65,
+        0.65
+      ]
+    },
+    "thirdperson_lefthand": {
+      "rotation": [
+        -75,
+        0,
+        -180
+      ],
+      "translation": [
+        0,
+        1.5,
+        4
+      ],
+      "scale": [
+        0.65,
+        0.65,
+        0.65
+      ]
+    },
+    "firstperson_righthand": {
+      "rotation": [
+        -150,
+        6,
+        -180
+      ],
+      "translation": [
+        1,
+        1.25,
+        -1.75
+      ],
+      "scale": [
+        0.8,
+        0.8,
+        0.8
+      ]
+    },
+    "firstperson_lefthand": {
+      "rotation": [
+        -150,
+        6,
+        -180
+      ],
+      "translation": [
+        1,
+        1.25,
+        -1.75
+      ],
+      "scale": [
+        0.8,
+        0.8,
+        0.8
+      ]
+    },
+    "ground": {
+      "translation": [
+        0,
+        2,
+        0
+      ],
+      "scale": [
+        0.5,
+        0.5,
+        0.5
+      ]
+    },
+    "gui": {
+      "rotation": [
+        -141.48,
+        32.79,
+        -81.79
+      ],
+      "translation": [
+        0.5,
+        -2,
+        -7.75
+      ],
+      "scale": [
+        0.85,
+        0.85,
+        0.85
+      ]
+    },
+    "head": {
+      "rotation": [
+        180,
+        0,
+        90
+      ],
+      "translation": [
+        -2.5,
+        7.41,
+        0.5
+      ]
+    },
+    "fixed": {
+      "rotation": [
+        -90,
+        0,
+        0
+      ],
+      "translation": [
+        0,
+        0,
+        -6.31
+      ],
+      "scale": [
+        0.9,
+        0.9,
+        0.9
+      ]
+    }
+  },
+  "groups": [
+    {
+      "name": "Book",
+      "origin": [
+        0,
+        0,
+        0
+      ],
+      "color": 0,
+      "children": [
+        0,
+        1,
+        {
+          "name": "EastSide",
+          "origin": [
+            0,
+            0,
+            0
+          ],
+          "color": 0,
+          "children": [
+            2,
+            3
+          ]
+        },
+        {
+          "name": "WestSide",
+          "origin": [
+            0,
+            0,
+            0
+          ],
+          "color": 0,
+          "children": [
+            4
+          ]
+        }
+      ]
+    }
+  ]
+}

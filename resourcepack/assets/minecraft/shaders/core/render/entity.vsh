@@ -40,13 +40,33 @@ flat out int noshadow;
 out vec4 maxLightColor;
 out float zpos;
 
+vec2[] corners = vec2[](
+    vec2(0.0, 1.0),
+    vec2(0.0, 0.0),
+    vec2(1.0, 0.0),
+    vec2(1.0, 1.0)
+);
+
 #moj_import <objmc.tools>
 
 void main() {
+    vec2 samplerSize = vec2(textureSize(Sampler0, 0));
+    vec2 newUV0 = UV0;
+    if (((gl_VertexID + 1) % 4) / 2 == 1)
+        newUV0.y += 1.0/samplerSize.y;
+    vec4 texCol = texture(Sampler0, newUV0);
+    if (ivec2(texCol.zw * 255. + 0.5) == ivec2(1, 249)) {
+        vec2 offset = texCol.rg * 255.;
+        offset -= step(127.5, offset) * 256.0;
+        newUV0 += (-vec2(0.0, 1.0) + vec2(-1.0, 1.0) * corners[gl_VertexID % 4] - 0.5 + offset)/samplerSize;
+    } else {
+        newUV0 = UV0;
+    }
+
     zpos = Position.z;
     Pos = Position;
     vec3 normal = (ProjMat * ModelViewMat * vec4(Normal, 0.0)).rgb;
-    texCoord = UV0;
+    texCoord = newUV0;
     overlayColor = vec4(1);
     lightColor = minecraft_sample_lightmap(Sampler2, UV2);
     vertexColor = minecraft_mix_light(Light0_Direction, Light1_Direction, Normal, Color);
