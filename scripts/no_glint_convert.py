@@ -74,10 +74,10 @@ def update_texture(mappings, model, model_id, rp):
             uv = [(int(x/16 * width + outer_width - width), int((y/16 * height + outer_height - height)/frame_count)) for x, y in uv]
             for frame in range(frame_count):
                 frame_offset_y = int(frame * single_frame_height)
-                gen_tex.putpixel((cursor_x  , cursor_y   + frame_offset_y), (uv[0][0]-cursor_x, (uv[0][1]-cursor_y) % 256, 1, 249))
-                gen_tex.putpixel((cursor_x+1, cursor_y   + frame_offset_y), (uv[1][0]-cursor_x, (uv[1][1]-cursor_y) % 256, 1, 249))
-                gen_tex.putpixel((cursor_x  , cursor_y+1 + frame_offset_y), (uv[2][0]-cursor_x, (uv[2][1]-cursor_y) % 256, 1, 249))
-                gen_tex.putpixel((cursor_x+1, cursor_y+1 + frame_offset_y), (uv[3][0]-cursor_x, (uv[3][1]-cursor_y) % 256, 1, 249))
+                gen_tex.putpixel((cursor_x  , cursor_y   + frame_offset_y), ((uv[0][0]-cursor_x) % 256, (uv[0][1]-cursor_y) % 256, 1, 249))
+                gen_tex.putpixel((cursor_x+1, cursor_y   + frame_offset_y), ((uv[1][0]-cursor_x) % 256, (uv[1][1]-cursor_y) % 256, 1, 249))
+                gen_tex.putpixel((cursor_x  , cursor_y+1 + frame_offset_y), ((uv[2][0]-cursor_x) % 256, (uv[2][1]-cursor_y) % 256, 1, 249))
+                gen_tex.putpixel((cursor_x+1, cursor_y+1 + frame_offset_y), ((uv[3][0]-cursor_x) % 256, (uv[3][1]-cursor_y) % 256, 1, 249))
             model_uv = [((x+0.5)*16 / outer_width, (y+0.5)*16 / outer_height / frame_count) for x, y in [(cursor_x, cursor_y), (cursor_x+1, cursor_y)]]
             for (i, face) in faces:
                 try:
