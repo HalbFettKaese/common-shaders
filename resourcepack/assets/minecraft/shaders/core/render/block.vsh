@@ -34,7 +34,7 @@ out float dimension;
 out vec4 maxLightColor;
 out vec3 faceLightingNormal;
 
-#moj_import <objmc.tools>
+#moj_import <objmc_tools.glsl>
 
 void main() {
     //default
@@ -45,7 +45,7 @@ void main() {
 
     //objmc
     #define BLOCK
-    #moj_import <objmc.main>
+    #moj_import <objmc_main.glsl>
 
     lightColor = minecraft_sample_lightmap(Sampler2, UV2);
     gl_Position = ProjMat * ModelViewMat * vec4(Pos, 1.0);

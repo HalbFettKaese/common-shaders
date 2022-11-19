@@ -47,7 +47,7 @@ vec2[] corners = vec2[](
     vec2(1.0, 1.0)
 );
 
-#moj_import <objmc.tools>
+#moj_import <objmc_tools.glsl>
 
 void main() {
     vec2 samplerSize = vec2(textureSize(Sampler0, 0));
@@ -75,7 +75,7 @@ void main() {
 
     //objmc
     #define ENTITY
-    #moj_import <objmc.main>
+    #moj_import <objmc_main.glsl>
 
     gl_Position = ProjMat * ModelViewMat * (vec4(Pos, 1.0));
     vertexDistance = fog_distance(ModelViewMat, IViewRotMat * Pos, FogShape);
